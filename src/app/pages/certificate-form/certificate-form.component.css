@@ -75,6 +75,10 @@ label {
   outline: none;
 }
 
+.custom-input-group {
+  margin-bottom: 20px !important;
+}
+
 .custom-input-group:has(.custom-input:focus) label{
   color: #3B5AC2;
 }

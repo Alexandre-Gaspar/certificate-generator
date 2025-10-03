@@ -1,7 +1,8 @@
 .navbar {
   background-color: #ffffff;
   padding: 1rem 2rem;
-  border: 1px solid #E2E8F0
+  border: 1px solid #E2E8F0;
+  padding-inline: 12px 24px;
 }
 
 .navbar-logo img {
@@ -14,4 +15,18 @@
 
 .nav-link.active {
   color: #3B5AC2;
+  font-weight: 600;
+}
+
+.nav-link {
+  padding: 6px !important;
+}
+
+.nav-item {
+  cursor: pointer;
+  margin-left: 18px !important;
+}
+
+.nav-item i{
+  font-size: 20px;
 }
