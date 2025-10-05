@@ -97,6 +97,10 @@ label {
   vertical-align: middle;
 }
 
-.custom-input-group:has(.error-message)>label{
+/* .custom-input-group:has(.error-message)>label{
+  color: #D71D1D;
+} */
+
+.text-danger-label {
   color: #D71D1D;
 }
