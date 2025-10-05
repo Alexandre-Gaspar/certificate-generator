@@ -1,4 +1,6 @@
-<button class="custom-button">
-  <i class="ph ph-plus"></i>
-  <span>Botão secundário</span>
+<button [ngStyle]="disabled ? {'opacity': '50%'} : {}" class="custom-button">
+  @if (phIconClass) {
+    <i class="{{ phIconClass }}"></i>
+  }
+  <span>{{ btnText }}</span>
 </button>
