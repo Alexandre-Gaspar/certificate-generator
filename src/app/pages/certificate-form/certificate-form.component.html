@@ -8,7 +8,7 @@
     <h2 class="card-title">Novo Certificado</h2>
     <div class="mb-3 custom-input-group">
       <label [ngClass]="{'text-danger-label': validateField(nameRef)}" for="name" class="form-label">Nome</label>
-      <input [(ngModel)]="name" #nameRef="ngModel" maxlength="150" required type="text" id="name" name="name" class="form-control custom-input" placeholder="Nome do aluno">
+      <input [(ngModel)]="certificate.name" #nameRef="ngModel" maxlength="150" required type="text" id="name" name="name" class="form-control custom-input" placeholder="Nome do aluno">
       @if (validateField(nameRef)) {
         <div class="error-message d-flex align-items-center">
           <i class="ph ph-warning-circle"></i>
@@ -23,7 +23,7 @@
       </div>
       <app-secondary-button 
         (click)="addActivity()"
-        [disabled]="!validateForm()"
+        [disabled]="activity.length == 0"
         [phIconClass]="'ph ph-plus'"
         [btnText]="'Adicionar'"
       ></app-secondary-button>
@@ -31,21 +31,22 @@
     <div class="activity-group">
       <label for="" class="form-label">Lista de actividades</label>
       <div  class="item-list w-100">
-        @for (activity of activities; track $index) {
+        @for (activity of certificate.activities; track $index) {
           <div class="item">
             <span class="item__text">{{ activity }}</span>
             <div (click)="removeActivitybyIndex($index)" class="item__btn-remove">
               <i class="ph-bold ph-x"></i>
             </div>
           </div>
-          @if ($index + 1 != activities.length) {
+          @if ($index + 1 != certificate.activities.length) {
             <hr>
           }
         }
       </div>
     </div>
     <app-primary-button 
-      [disabled]="activities.length == 0"
+      (click)="generateCertificate()"
+      [disabled]="!validateForm()"
       [btnText]="'Gerar certificado'"
     ></app-primary-button>
   </div>

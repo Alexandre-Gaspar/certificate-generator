@@ -3,6 +3,7 @@ import { PrimaryButtonComponent } from "../../_components/primary-button/primary
 import { SecondaryButtonComponent } from "../../_components/secondary-button/secondary-button.component";
 import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Certificate } from '../../interfaces/certificate';
 
 @Component({
   selector: 'app-certificate-form',
@@ -11,24 +12,32 @@ import { CommonModule } from '@angular/common';
   styleUrl: './certificate-form.component.css'
 })
 export class CertificateFormComponent {
-  name: string = '';
   activity: string = '';
-  activities: string[] = [];
+
+  certificate: Certificate = {
+    name: '',
+    activities: []
+  };
   
   validateField(field: NgModel) {
     return field.invalid && field.touched;
   }
   
   validateForm() {
-    return this.name.length > 0 && this.activity.length > 0;
+    return this.certificate.name.length > 0 && this.certificate.activities.length > 0;
   }
-
+  
   addActivity() {
-    this.activities.push(this.activity);
+    this.certificate.activities.push(this.activity);
     this.activity = '';
   }
-
+  
   removeActivitybyIndex(index: number) {
-    this.activities.splice(index, 1);
+    this.certificate.activities.splice(index, 1);
+  }
+  
+  generateCertificate() {
+    if (!this.validateForm()) return;
+    console.log(this.certificate);
   }
 }
