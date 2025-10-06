@@ -16,7 +16,8 @@ export class CertificateFormComponent {
 
   certificate: Certificate = {
     name: '',
-    activities: []
+    activities: [],
+    issueDate: ''
   };
   
   validateField(field: NgModel) {
@@ -38,6 +39,17 @@ export class CertificateFormComponent {
   
   generateCertificate() {
     if (!this.validateForm()) return;
+    this.certificate.issueDate = this.getActualDate();
     console.log(this.certificate);
+  }
+
+  getActualDate(): string {
+    const date = new Date();
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
   }
 }
