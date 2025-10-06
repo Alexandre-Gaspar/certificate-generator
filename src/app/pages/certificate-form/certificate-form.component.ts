@@ -14,12 +14,21 @@ export class CertificateFormComponent {
   name: string = '';
   activity: string = '';
   activities: string[] = [];
-
+  
   validateField(field: NgModel) {
     return field.invalid && field.touched;
   }
-
+  
   validateForm() {
-    return this.name.length > 0 && this.activities.length > 0;
+    return this.name.length > 0 && this.activity.length > 0;
+  }
+
+  addActivity() {
+    this.activities.push(this.activity);
+    this.activity = '';
+  }
+
+  removeActivitybyIndex(index: number) {
+    this.activities.splice(index, 1);
   }
 }

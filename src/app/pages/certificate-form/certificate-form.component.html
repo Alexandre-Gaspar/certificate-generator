@@ -22,6 +22,7 @@
         <input [(ngModel)]="activity" #activityRef="ngModel" maxlength="50" required type="text" id="activity" name="activity" class="form-control custom-input" placeholder="Actividade exercida">
       </div>
       <app-secondary-button 
+        (click)="addActivity()"
         [disabled]="!validateForm()"
         [phIconClass]="'ph ph-plus'"
         [btnText]="'Adicionar'"
@@ -33,7 +34,7 @@
         @for (activity of activities; track $index) {
           <div class="item">
             <span class="item__text">{{ activity }}</span>
-            <div class="item__btn-remove">
+            <div (click)="removeActivitybyIndex($index)" class="item__btn-remove">
               <i class="ph-bold ph-x"></i>
             </div>
           </div>
